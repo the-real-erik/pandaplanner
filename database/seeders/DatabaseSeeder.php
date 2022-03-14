@@ -21,22 +21,18 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RoleSeeder::class,
-            PermissionSeeder::class
+            PermissionSeeder::class,
+            GroupSeeder::class
         ]);
 
         $users = User::factory()->count(20)->create();
-        $groups = Group::factory()->count(10)->create();
 
-        $roles = Role::all();
-
-        $groupRoleUsers = GroupRoleUser::factory()->count(5)->create();
-
-//        $groupRoleUsers = GroupRoleUser::factory()->count(5)->state(new Sequence(
-//            fn ($sequence) => [
-//                'user_id' => $users->random()->id,
-//                'group_id' => $groups->random()->id,
-//                'role_id' => $roles->random()->id
-//            ]
-//        ))->create();
+        $groupRoleUsers = GroupRoleUser::factory()->count(5)->state(new Sequence(
+            fn ($sequence) => [
+                'user_id' => User::all()->random(),
+                'group_id' => Group::all()->random(),
+                'role_id' => Role::all()->random()
+            ]
+        ))->create();
     }
 }
