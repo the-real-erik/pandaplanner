@@ -4,9 +4,13 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Factories\Sequence;
+use App\Models\User;
+use App\Models\Role;
 use App\Models\Group;
 
-class GroupSeeder extends Seeder
+
+class GroupRoleUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +19,6 @@ class GroupSeeder extends Seeder
      */
     public function run()
     {
-        Group::factory()->count(10)->create();
+        //
     }
 }

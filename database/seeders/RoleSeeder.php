@@ -4,9 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Group;
+use Illuminate\Support\Facades\DB;
 
-class GroupSeeder extends Seeder
+
+class RoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +16,8 @@ class GroupSeeder extends Seeder
      */
     public function run()
     {
-        Group::factory()->count(10)->create();
+        DB::table('roles')->insert([
+            ['name' => 'Owner'], ['name' => 'Member'], ['name' => 'Guest']
+        ]);
     }
 }
